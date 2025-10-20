@@ -1,0 +1,73 @@
+## Task 5: Data Science Example - Consumer Complaint Text Classification
+
+### 1. Project Overview
+
+This project implements a complete pipeline for **multi-class text classification** using the Consumer Financial Protection Bureau (CFPB) complaint database. The objective is to build, compare, and evaluate machine learning models capable of classifying free-form complaint narratives into one of the four required product categories:
+
+| ID | Category |
+| :---: | :--- |
+| **0** | Credit reporting, repair, or other |
+| **1** | Debt collection |
+| **2** | Consumer Loan |
+| **3** | Mortgage |
+
+The pipeline strictly adheres to the six steps outlined in the assessment.
+
+***
+
+### 2. Technical Requirements
+
+#### Prerequisites
+* Python 3.8+
+* The following libraries are required: `pandas`, `scikit-learn`, `nltk`, `matplotlib`, `seaborn`.
+
+#### Execution Guide
+1.  **Data:** Ensure the downloaded complaint dataset is placed at the specified path in the Python script.
+2.  **Run:** Execute the main Python script containing the six steps sequentially.
+
+***
+
+### 3. Methodology and Model Comparison (Steps 1, 2, 3, & 4)
+
+#### Step 1 & 2: Data Cleaning and Feature Engineering
+
+The text data underwent rigorous cleaning to reduce noise and normalize the vocabulary:
+* **Contraction Handling:** Common contractions were expanded.
+* **Cleaning:** The text was converted to lowercase, and punctuation/words containing digits were removed.
+* **Tokenization & Filtering:** Stopwords were removed.
+* **Normalization:** **Lemmatization** was applied to reduce words to their base form.
+* **Feature Engineering:** The cleaned text was converted into a numerical format using the **TF-IDF Vectorizer**.
+
+#### Step 3 & 4: Model Selection and Comparison
+
+Three robust multi-classification models were trained and compared based on their **Accuracy** on the 20% test set:
+
+| Model Name | Type | Key Hyperparameters | Initial Accuracy (Example Output) |
+| :--- | :--- | :--- | :--- |
+| **Linear SVM** | Support Vector Machine | `dual=False`, `max_iter=1000` | 0.8871 |
+| **Logistic Regression** | Linear Model | `solver='liblinear'`, `max_iter=1000` | 0.8854 |
+| **Multinomial Naive Bayes** | Probabilistic Classifier | Default settings | 0.8752 |
+
+**Conclusion:** The **Linear SVM** model yielded the highest accuracy and was selected as the **`best_model`** for the final evaluation steps.
+
+---
+
+### 4. Model Evaluation and Prediction (Steps 5 & 6)
+
+### Step 5: Model Evaluation
+
+The final evaluation was performed on the test set using the best model.
+
+#### Classification Report (Linear SVM)
+
+[Screenshot must be included here showing the Classification Report output (Precision, Recall, F1-Score) for the best model, along with date/time and name. *Required as proof.*]
+
+#### Confusion Matrix (Linear SVM)
+
+The Confusion Matrix visually confirms the model's performance by showing correct and incorrect classifications between the four categories.
+
+[Screenshot must be included here showing the Confusion Matrix plot, along with date/time and name. *Required as proof.*]
+
+### Step 6: Prediction
+
+A final prediction was demonstrated on a sample, unseen complaint using the finalized best model.
